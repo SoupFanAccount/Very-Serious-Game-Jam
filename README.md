@@ -9,4 +9,4 @@ WHEN Unity is set up:
 2. In your GitHub desktop application of choice: File > Clone Repo > Save where ever makes sense to you
 3. In Unity HUB: Add > Add project from disk > Find the repo you just cloned. You might need to install a different Unity version as well
 
-The current deal is that all programmers will each have their own branch and that I (Soup) will be handling the single art branch, but I might set up a system for file sharing for all artists.
+The current deal is that all programmers will each have their own branch and that Soup will be handling the single art branch, but might set up a system for file sharing for all artists.
