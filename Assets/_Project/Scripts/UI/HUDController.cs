@@ -10,6 +10,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI suspicionText;
     [SerializeField] private TextMeshProUGUI dayText;
     [SerializeField] private TextMeshProUGUI debtText;
+    [SerializeField] private TextMeshProUGUI clockText;
 
     void Update()
     {
