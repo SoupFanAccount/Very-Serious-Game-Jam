@@ -21,6 +21,11 @@ public class HUDController : MonoBehaviour
             suspicionText.text = $"Suspicion: {GameManager.Instance.suspicion} / {GameManager.Instance.maxSuspicion}";
             dayText.text = $"Day: {GameManager.Instance.currentDay} / {GameManager.Instance.totalDays}";
             debtText.text = $"Debt: ${GameManager.Instance.debt}";
+
+            if (DayNightCycle.Instance != null && clockText != null)
+            {
+                clockText.text = DayNightCycle.Instance.ClockString();
+            }
         }
     }
 }
