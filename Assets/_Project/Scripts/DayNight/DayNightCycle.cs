@@ -72,14 +72,6 @@ public class DayNightCycle : MonoBehaviour
     public void EndNight()
     {
         GameManager.Instance.NextDay();
-        if(GameManager.Instance.currentDay > 7)
-        {
-            Debug.Log("End of the week");
-            TimeSpeed=0f;
-        }
-        else
-        {
-            StartDay();
-        }       
+        StartDay();
     }
 }
