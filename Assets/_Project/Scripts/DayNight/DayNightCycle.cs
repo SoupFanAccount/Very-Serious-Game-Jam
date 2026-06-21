@@ -46,7 +46,10 @@ public class DayNightCycle : MonoBehaviour
             hours=12;
         }
         string clockString = string.Format("{0:00}:{1:00} {2}",hours,minutes,ampm);
-        clockUI.text=clockString;
+
+        // Added null guard
+        if (clockUI != null)
+            clockUI.text = clockString;
     }
     
     public void StartDay()
