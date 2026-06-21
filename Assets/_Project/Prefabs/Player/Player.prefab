@@ -192,6 +192,8 @@ GameObject:
   - component: {fileID: 8997583304212176235}
   - component: {fileID: 7713809963378248959}
   - component: {fileID: 6808013485016519824}
+  - component: {fileID: 8362865227992231711}
+  - component: {fileID: 5452384411290606882}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -282,3 +284,51 @@ MonoBehaviour:
   acceleration: 20
   deceleration: 5
   rotationSpeed: 500
+--- !u!114 &8362865227992231711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4125572002730005660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063b97de2db315f49888b7677caa065e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shop.PlayerInteractionController
+  detectionRadius: 2.5
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  interactionOrigin: {fileID: 3051672531626670092}
+  promptView: {fileID: 5452384411290606882}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 1c3d56f3-6221-4cfa-943f-bbd5912bc7a1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d69b491a-0d11-4410-9f75-2ed33b262acc
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact
+      m_Flags: 0
+    m_Flags: 0
+--- !u!114 &5452384411290606882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4125572002730005660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e24866f091d6a41aeb94c2f39dfcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shop.OnGuiInteractionPromptView
+  feedbackDuration: 2
