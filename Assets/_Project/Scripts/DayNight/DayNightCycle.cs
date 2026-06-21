@@ -1,16 +1,26 @@
 using System;
 using UnityEngine;
-using TMPro;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public static DayNightCycle Instance {get;private set;}
     public enum Phase { Day, Night }
     public Phase currentPhase = Phase.Day;
     [SerializeField] float TimeSpeed;
-    [SerializeField] TextMeshProUGUI clockUI;
     private float timeInaDay=86400f;
     private float currentTime;
+    public float CurrentTime => currentTime;
     private float previousTime;
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance=this;
+    }
 
     public void Start()
     {
@@ -23,7 +33,6 @@ public class DayNightCycle : MonoBehaviour
         previousTime=currentTime;
         currentTime += Time.deltaTime * TimeSpeed;       
         currentTime %= timeInaDay;
-        UpdateClock();
 
         if(currentPhase == Phase.Day && currentTime >= 18*3600f && previousTime < 18*3600f)
         {
@@ -35,7 +44,7 @@ public class DayNightCycle : MonoBehaviour
         }
     }
 
-    public void UpdateClock()
+    public string ClockString()
     {
         int hours = Mathf.FloorToInt(currentTime / 3600f);
         int minutes = Mathf.FloorToInt((currentTime - hours * 3600f) / 60f);
@@ -45,8 +54,7 @@ public class DayNightCycle : MonoBehaviour
         {
             hours=12;
         }
-        string clockString = string.Format("{0:00}:{1:00} {2}",hours,minutes,ampm);
-        clockUI.text=clockString;
+        return string.Format("{0:00}:{1:00} {2}",hours,minutes,ampm);
     }
     
     public void StartDay()
