@@ -40,7 +40,7 @@ namespace Minigames
         /// <summary>Single-line summary suitable for the shop's transient feedback line.</summary>
         public string ToShopFeedbackString()
         {
-            return $"Laundered ${MoneyLaundered} ({BillsCleaned} cleaned, {BillsFailed} ruined).";
+            return $"Laundered ${MoneyLaundered} ({BillsCleaned} cleaned, {BillsFailed} botched).";
         }
     }
 }

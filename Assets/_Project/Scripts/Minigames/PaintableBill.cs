@@ -16,7 +16,7 @@ namespace Minigames
         [Tooltip("Background image whose colour shows the bill's state. Defaults to the Image on this object.")]
         [SerializeField] private Image billImage;
 
-        [Tooltip("Optional label that shows the bill's state text (Dirty / Clean! / Ruined!).")]
+        [Tooltip("Optional label that shows the bill's state text (Dirty / Clean! / Botched!).")]
         [SerializeField] private TextMeshProUGUI stateLabel;
 
         [Tooltip("Stains on this bill. If left empty, all PaintableDirtyPatch children are used.")]
@@ -61,10 +61,10 @@ namespace Minigames
             Apply(cleanColor, "Clean!");
         }
 
-        /// <summary>Shows the ruined visual after the bill fails.</summary>
+        /// <summary>Shows the botched visual after the bill fails. The cash is not destroyed; it stays dirty.</summary>
         public void ShowRuined()
         {
-            Apply(ruinedColor, "Ruined!");
+            Apply(ruinedColor, "Botched!");
         }
 
         /// <summary>Applies a background colour and label together, guarding missing references.</summary>
