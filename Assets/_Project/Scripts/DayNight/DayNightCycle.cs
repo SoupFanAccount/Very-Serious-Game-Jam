@@ -11,6 +11,8 @@ public class DayNightCycle : MonoBehaviour
     private float currentTime;
     public float CurrentTime => currentTime;
     private float previousTime;
+    public bool isOpen {get;private set;}
+    
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class DayNightCycle : MonoBehaviour
     {
         currentTime = 6*3600f;
         StartDay();
+        Debug.Log("The shop is closed");
     }
 
     public void Update()
@@ -59,7 +62,7 @@ public class DayNightCycle : MonoBehaviour
     
     public void StartDay()
     {
-        currentPhase = Phase.Day;
+        currentPhase = Phase.Day;       
         Debug.Log("Day " + GameManager.Instance.currentDay + " started.");
     }
 
@@ -73,5 +76,21 @@ public class DayNightCycle : MonoBehaviour
     {
         GameManager.Instance.NextDay();
         StartDay();
+    }
+
+    public void OpenShop()
+    {
+        if(isOpen) return;
+
+        isOpen=true;
+        Debug.Log("The shop is open");
+    }
+
+    public void CloseShop()
+    {
+        if(!isOpen) return;
+
+        isOpen=false;
+        Debug.Log("The shop is closed");
     }
 }
