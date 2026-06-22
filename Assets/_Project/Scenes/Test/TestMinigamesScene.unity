@@ -131,10 +131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4987600275964774700, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
-      propertyPath: brushStrength
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6303059770189605995, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -347,6 +343,10 @@ PrefabInstance:
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -659,6 +659,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WashingStation (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -720,7 +724,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2325017535504520742, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1
+      value: -4.52
       objectReference: {fileID: 0}
     - target: {fileID: 2325017535504520742, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_LocalPosition.y
@@ -866,6 +870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WashingStation (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -926,6 +934,10 @@ PrefabInstance:
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1027,6 +1039,10 @@ PrefabInstance:
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1201,7 +1217,7 @@ PrefabInstance:
     - target: {fileID: 4552864603484706645, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 206720089}
+      objectReference: {fileID: 3908152295041791234}
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (10)
@@ -1524,6 +1540,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WashingStation (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1595,6 +1615,10 @@ PrefabInstance:
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1934,6 +1958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WashingStation (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2070,6 +2098,10 @@ PrefabInstance:
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2371,6 +2403,10 @@ PrefabInstance:
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2948,6 +2984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WashingStation (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2971,6 +3011,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2325017535504520742, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
   m_PrefabInstance: {fileID: 996464200}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3908152295041791234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6639762965420689067, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+  m_PrefabInstance: {fileID: 6419401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe014fe362684ee4184d3a017cc71a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigames.PrintingPressMinigameLauncher
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
