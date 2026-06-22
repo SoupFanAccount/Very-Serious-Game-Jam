@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4987600275964774700, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+      propertyPath: brushStrength
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6303059770189605995, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -757,7 +761,7 @@ PrefabInstance:
     - target: {fileID: 4552864603484706645, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 206720089}
+      objectReference: {fileID: 1507768664}
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (9)
@@ -2000,6 +2004,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2325017535504520742, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
   m_PrefabInstance: {fileID: 582163792}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507768664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5084800929255501234, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+  m_PrefabInstance: {fileID: 6419401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f6e0c8a5befa4c95f7708d720fc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigames.PaintingBillsMinigameLauncher
 --- !u!1001 &1539052245
 PrefabInstance:
   m_ObjectHideFlags: 0
