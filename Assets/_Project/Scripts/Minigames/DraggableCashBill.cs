@@ -72,10 +72,10 @@ namespace Minigames
             }
         }
 
-        /// <summary>Shows the ruined visual after the wrong chemical was used.</summary>
+        /// <summary>Shows the botched visual after the wrong chemical was used. The cash is not destroyed; it stays dirty.</summary>
         public void ShowFailed()
         {
-            Apply(failedColor, "Ruined!");
+            Apply(failedColor, "Botched!");
         }
 
         /// <summary>Returns the bill to its resting position so it is ready to be dragged again.</summary>

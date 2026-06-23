@@ -41,10 +41,13 @@ namespace Minigames
         [SerializeField] private Button quitButton;
 
         [Header("Session Settings")]
-        [Tooltip("Largest value a single bill can hold. Dirty money is split into as many of these as needed, plus a remainder bill. No cap on the number of bills.")]
+        [Tooltip("Largest value a single bill can hold. Dirty money is split into as many of these as needed, plus a remainder bill.")]
         [SerializeField] private int maxBillValue = 100;
 
-        [Tooltip("Suspicion added each time a bill is ruined.")]
+        [Tooltip("Most bills processed in one visit, so a big pile of dirty money never makes an endless session. Any money beyond the cap stays dirty for the next visit. 0 means no cap.")]
+        [SerializeField] private int maxBillsPerSession = 8;
+
+        [Tooltip("Suspicion added each time a bill is botched.")]
         [SerializeField] private int suspicionPerFailedBill = 5;
 
         [Tooltip("If true, the chemical zones swap positions for each new bill so the player must read the labels, not memorise the layout.")]
@@ -71,6 +74,7 @@ namespace Minigames
         private bool _sessionActive;
         private bool _dragActive;
         private bool _currentBillResolved;
+        private bool _sessionFinishedRaised;
 
         private ChemicalCleaningResult _lastResult;
         private Coroutine _advanceRoutine;
@@ -100,6 +104,20 @@ namespace Minigames
         public void BeginSession(int dirtyMoneyAvailable)
         {
             StopPendingRoutines();
+            _sessionFinishedRaised = false;
+
+            // Refuse to run a half-wired prefab: without a bill and zones there is nothing to drag or clean.
+            // Abort gracefully (rather than throwing) so the launcher still hides the panel and unfreezes the player.
+            if (bill == null || chemicalZones == null || chemicalZones.Length == 0)
+            {
+                Debug.LogError(
+                    $"{nameof(ChemicalCleaningMinigameController)}: assign the bill and chemical zones before starting; aborting session.",
+                    this);
+                _sessionActive = false;
+                _lastResult = new ChemicalCleaningResult(0, 0, 0, 0);
+                RaiseSessionFinished();
+                return;
+            }
 
             _billsCleaned = 0;
             _billsFailed = 0;
@@ -203,7 +221,7 @@ namespace Minigames
             ResolveBill();
         }
 
-        /// <summary>Ruins the current bill, adds suspicion and schedules the next bill.</summary>
+        /// <summary>Botches the current bill, adds suspicion and schedules the next bill.</summary>
         private void FailCurrentBill()
         {
             GameManager game = GameManager.Instance;
@@ -213,7 +231,8 @@ namespace Minigames
             _suspicionAdded += suspicionPerFailedBill;
             _billsFailed++;
             bill.ShowFailed();
-            UpdateStatus($"Wrong chemical! Bill ruined. +{suspicionPerFailedBill} suspicion.");
+            // The cash is not destroyed: it stays dirty in the GameManager pool and can be attempted again later.
+            UpdateStatus($"Wrong chemical! Bill botched - still dirty. +{suspicionPerFailedBill} suspicion.");
             ResolveBill();
         }
 
@@ -304,7 +323,7 @@ namespace Minigames
             if (summaryPanel != null)
                 summaryPanel.SetActive(false);
 
-            SessionFinished?.Invoke(_lastResult);
+            RaiseSessionFinished();
         }
 
         /// <summary>Aborts an in-progress session, reporting whatever was achieved so far.</summary>
@@ -328,13 +347,28 @@ namespace Minigames
             if (summaryPanel != null)
                 summaryPanel.SetActive(false);
 
+            RaiseSessionFinished();
+        }
+
+        /// <summary>
+        /// Raises <see cref="SessionFinished"/> at most once per session. Both the close (button/auto-close) and
+        /// cancel paths route through here so a double close, a cancel-then-close, or an auto-close racing the
+        /// close button can never fire the event twice for the same session.
+        /// </summary>
+        private void RaiseSessionFinished()
+        {
+            if (_sessionFinishedRaised)
+                return;
+
+            _sessionFinishedRaised = true;
             SessionFinished?.Invoke(_lastResult);
         }
 
         /// <summary>
         /// Splits the available dirty money into as many <see cref="maxBillValue"/> bills as possible, plus a
         /// final bill for any remainder. No bill exceeds the max and the total never exceeds the amount
-        /// available. There is no cap on the number of bills; the player leaves via the quit button.
+        /// available. At most <see cref="maxBillsPerSession"/> bills are produced (0 = unlimited) so a large
+        /// pile never makes an endless session; any money beyond the cap stays dirty for the next visit.
         /// </summary>
         private void BuildBillChunks(int dirtyMoneyAvailable)
         {
@@ -344,15 +378,16 @@ namespace Minigames
                 return;
 
             int safeMax = Mathf.Max(1, maxBillValue);
+            int cap = maxBillsPerSession > 0 ? maxBillsPerSession : int.MaxValue;
             int remaining = dirtyMoneyAvailable;
 
-            while (remaining > safeMax)
+            while (remaining > safeMax && _billAmounts.Count < cap)
             {
                 _billAmounts.Add(safeMax);
                 remaining -= safeMax;
             }
 
-            if (remaining > 0)
+            if (remaining > 0 && _billAmounts.Count < cap)
                 _billAmounts.Add(remaining);
         }
 

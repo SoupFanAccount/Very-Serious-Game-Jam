@@ -19,7 +19,7 @@ namespace Minigames
         [Tooltip("Image whose colour shows the bill's current state. Defaults to the Image on this object.")]
         [SerializeField] private Image billImage;
 
-        [Tooltip("Optional label that shows the bill's current state text (Dirty / Printed! / Ruined!).")]
+        [Tooltip("Optional label that shows the bill's current state text (Dirty / Printed! / Botched!).")]
         [SerializeField] private TextMeshProUGUI stateLabel;
 
         [Header("State Colours")]
@@ -71,10 +71,10 @@ namespace Minigames
             Apply(printedColor, "Printed!");
         }
 
-        /// <summary>Shows the ruined visual after a misprint or timeout.</summary>
+        /// <summary>Shows the botched visual after a misprint or timeout. The cash is not destroyed; it stays dirty.</summary>
         public void ShowRuined()
         {
-            Apply(ruinedColor, "Ruined!");
+            Apply(ruinedColor, "Botched!");
         }
 
         /// <summary>Begins a drag gesture if the controller currently allows one.</summary>
