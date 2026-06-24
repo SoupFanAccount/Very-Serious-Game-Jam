@@ -11,6 +11,7 @@ public class DayNightCycle : MonoBehaviour
     private float currentTime;
     public float CurrentTime => currentTime;
     private float previousTime;
+    public int CurrentHour => Mathf.FloorToInt(currentTime / 3600f);
     public bool isOpen {get;private set;}
     
 
