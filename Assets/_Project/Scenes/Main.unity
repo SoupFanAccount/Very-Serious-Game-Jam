@@ -227,6 +227,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21acb27018c53e149baec2eba4860384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigames.ChemicalCleaningMinigameLauncher
+--- !u!114 &6419403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6639762965420689067, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+  m_PrefabInstance: {fileID: 6419401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe014fe362684ee4184d3a017cc71a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigames.PrintingPressMinigameLauncher
 --- !u!4 &71647510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2325017535504520742, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
@@ -650,7 +661,7 @@ PrefabInstance:
     - target: {fileID: 4552864603484706645, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 6419402}
+      objectReference: {fileID: 6419403}
     - target: {fileID: 5242889456922426562, guid: 0393d6f06d0cc394fbd66a8fc22b0764, type: 3}
       propertyPath: m_Name
       value: WashingStation (7)
