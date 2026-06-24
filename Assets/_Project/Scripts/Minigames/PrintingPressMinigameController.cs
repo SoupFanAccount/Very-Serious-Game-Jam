@@ -10,8 +10,8 @@ namespace Minigames
     /// <summary>
     /// Owns the state of a printing-press session: it splits the dirty money into bills, presents each bill to
     /// be dragged onto the press bed, and decides when a bill prints clean (placed inside the alignment
-    /// tolerance when the lever is pulled) or is ruined (misaligned, or the per-bill timer runs out). The bill,
-    /// target zone and lever report to it; it never touches the shared input system. It raises
+    /// tolerance when the crank is spun) or is ruined (misaligned, or the per-bill timer runs out). The bill,
+    /// target zone and crank report to it; it never touches the shared input system. It raises
     /// <see cref="SessionFinished"/> once the summary has been dismissed so the launcher can hide the panel.
     /// </summary>
     public class PrintingPressMinigameController : MonoBehaviour
@@ -23,8 +23,8 @@ namespace Minigames
         [Tooltip("The highlighted alignment target on the press bed.")]
         [SerializeField] private PrintingPressTargetZone targetZone;
 
-        [Tooltip("The lever/button that activates the press. Wired to evaluate the placed bill.")]
-        [SerializeField] private PrintingPressLever lever;
+        [Tooltip("The crank the player spins to activate the press. Wired to evaluate the placed bill.")]
+        [SerializeField] private PrintingPressCrank crank;
 
         [Tooltip("Container holding the bill, bed and lever. Shown during play, hidden on the summary.")]
         [SerializeField] private GameObject playArea;
@@ -66,6 +66,9 @@ namespace Minigames
         [Tooltip("Seconds the player has to print a single bill before it fails. 0 or less disables the timer.")]
         [SerializeField] private float secondsPerBill = 10f;
 
+        [Tooltip("Testing toggle: when true the per-bill timer never counts down or fails a bill. Leave off for normal play.")]
+        [SerializeField] private bool disableTimerForTesting;
+
         [Header("Alignment Settings")]
         [Tooltip("Maximum centre-to-centre pixel distance for a bill to print clean.")]
         [SerializeField] private float alignmentTolerance = 40f;
@@ -106,6 +109,9 @@ namespace Minigames
         /// <summary>True while a bill is in play and may still be dragged or pressed.</summary>
         public bool IsBillActive => _sessionActive && !_currentBillResolved;
 
+        /// <summary>True when the per-bill timer should run; off when disabled by value or the testing toggle.</summary>
+        private bool TimerEnabled => secondsPerBill > 0f && !disableTimerForTesting;
+
         /// <summary>Wires the optional buttons and hides the summary panel.</summary>
         private void Awake()
         {
@@ -120,7 +126,7 @@ namespace Minigames
         /// <summary>Counts down the current bill's timer and ruins the bill when it expires.</summary>
         private void Update()
         {
-            if (!IsBillActive || secondsPerBill <= 0f)
+            if (!IsBillActive || !TimerEnabled)
                 return;
 
             _billTimeRemaining = Mathf.Max(0f, _billTimeRemaining - Time.unscaledDeltaTime);
@@ -139,12 +145,12 @@ namespace Minigames
             StopPendingRoutines();
             _sessionFinishedRaised = false;
 
-            // Refuse to run a half-wired prefab: without a bill, a target to align to, and a lever to press
+            // Refuse to run a half-wired prefab: without a bill, a target to align to, and a crank to spin
             // there is no game. Abort gracefully so the launcher still hides the panel and unfreezes the player.
-            if (bill == null || targetZone == null || lever == null)
+            if (bill == null || targetZone == null || crank == null)
             {
                 Debug.LogError(
-                    $"{nameof(PrintingPressMinigameController)}: assign the bill, target zone and lever before starting; aborting session.",
+                    $"{nameof(PrintingPressMinigameController)}: assign the bill, target zone and crank before starting; aborting session.",
                     this);
                 _sessionActive = false;
                 _lastResult = new PrintingPressResult(0, 0, 0, 0);
@@ -161,8 +167,8 @@ namespace Minigames
 
             BuildBillChunks(dirtyMoneyAvailable);
 
-            if (lever != null)
-                lever.Initialize(this);
+            if (crank != null)
+                crank.Initialize(this);
 
             if (summaryPanel != null)
                 summaryPanel.SetActive(false);
@@ -181,7 +187,7 @@ namespace Minigames
         }
 
         /// <summary>
-        /// Evaluates the currently placed bill against the alignment tolerance. Called by the lever. Prints the
+        /// Evaluates the currently placed bill against the alignment tolerance. Called by the crank. Prints the
         /// bill clean when it is close enough (and, optionally, inside the zone), otherwise ruins it.
         /// </summary>
         public void TryPressCurrentBill()
@@ -304,7 +310,7 @@ namespace Minigames
             UpdateBillInfo();
             UpdateTimerText();
             UpdateAlignment(string.Empty);
-            UpdateStatus("Drag the bill onto the target, then pull the lever to print.");
+            UpdateStatus("Drag the bill onto the target, then spin the crank to print.");
         }
 
         /// <summary>Ends the session and shows the summary, with optional auto-close.</summary>
@@ -429,7 +435,7 @@ namespace Minigames
             if (timerText == null)
                 return;
 
-            timerText.text = secondsPerBill > 0f ? $"Time: {_billTimeRemaining:0.0}s" : string.Empty;
+            timerText.text = TimerEnabled ? $"Time: {_billTimeRemaining:0.0}s" : string.Empty;
         }
 
         /// <summary>Updates the optional alignment-quality line if one is assigned.</summary>
