@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class MainMenuController : MonoBehaviour
 
     [Header("UI Panels")]
     [SerializeField] private GameObject settingsPanel;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioMixer mainMixer;
 
     private void Start()
     {
@@ -27,6 +32,18 @@ public class MainMenuController : MonoBehaviour
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(true);
+        }
+    }
+
+    public void SetVolume(float sliderValue)
+    {
+        if (sliderValue <= -40f)
+        {
+            mainMixer.SetFloat("MasterVolume", -80f);
+        }
+        else
+        {
+            mainMixer.SetFloat("MasterVolume", sliderValue);
         }
     }
 
