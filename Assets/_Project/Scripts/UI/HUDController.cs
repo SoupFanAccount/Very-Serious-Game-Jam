@@ -32,7 +32,7 @@ public class HUDController : MonoBehaviour
 
         if (DayNightCycle.Instance != null && clockText != null)
         {
-            clockText.text = DayNightCycle.Instance.ClockString();
+            clockText.text = $"Time: {DayNightCycle.Instance.ClockString()}";
         }
     }
 
