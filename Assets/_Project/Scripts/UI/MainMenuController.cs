@@ -20,6 +20,10 @@ public class MainMenuController : MonoBehaviour
         {
             settingsPanel.SetActive(false);
         }
+
+        // Audio: start menu music (Dongas)
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayMenuMusic();
     }
 
     public void PlayGame()

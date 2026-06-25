@@ -2528,6 +2528,7 @@ GameObject:
   - component: {fileID: 1924777874}
   - component: {fileID: 1924777873}
   - component: {fileID: 1924777872}
+  - component: {fileID: 1924777875}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -2565,11 +2566,29 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 1b6439ca44fed4241a251a180fa4c29f, type: 2}
   musicSource: {fileID: 1924777874}
   ambienceSource: {fileID: 1924777874}
+  laundrySource: {fileID: 1924777874}
   sfxSource: {fileID: 1924777874}
-  menuTheme: {fileID: 0}
-  shopTheme: {fileID: 0}
-  dayAmbience: []
-  nightAmbience: []
+  menuTheme: {fileID: 8300000, guid: 9beec9b34463cbc44958ec11a5ba55c1, type: 3}
+  shopTheme: {fileID: 8300000, guid: 7aad488b9f5fce54ea317c410af55626, type: 3}
+  dayAmbience:
+  - {fileID: 8300000, guid: 9c5518c3e3990cf4c8306d2173bb88f5, type: 3}
+  - {fileID: 8300000, guid: c428a5d5a01079b489ad15a4afb3d087, type: 3}
+  - {fileID: 8300000, guid: 4f1e298ff7d19204aa61fc866fef61ad, type: 3}
+  - {fileID: 8300000, guid: cec2a92ed45f3d647886dae689bb0b23, type: 3}
+  nightAmbience:
+  - {fileID: 8300000, guid: c6404e1355034bb42ae4ad4bcf7b7058, type: 3}
+  - {fileID: 8300000, guid: a2d59f22b95343a43adf06e64fe2d384, type: 3}
+  - {fileID: 8300000, guid: 799267925aed2e04aa5e78681ab236f2, type: 3}
+  - {fileID: 8300000, guid: c07337bafdbf98f4b99a7e1591125eea, type: 3}
+  laundryLoops:
+  - {fileID: 8300000, guid: e66525518b932d64c82d167cf7f9152c, type: 3}
+  - {fileID: 8300000, guid: 5fd097c0e5cf97c40856a3b5967eea74, type: 3}
+  - {fileID: 8300000, guid: 247d3732b5c6eaa4884d4bceb2c77da5, type: 3}
+  - {fileID: 8300000, guid: 232931e25e72b334eba9cbe1dd5a0973, type: 3}
+  - {fileID: 8300000, guid: 63cc7e503900a644e91c7f25591b81f9, type: 3}
+  - {fileID: 8300000, guid: 698aa319ff4b51f4a8b6b8e0e607a9d6, type: 3}
+  - {fileID: 8300000, guid: d741ba75695d2864695a92ad3136612e, type: 3}
+  - {fileID: 8300000, guid: 7d044c649212ebf4e820fcf5aacf3fff, type: 3}
 --- !u!82 &1924777872
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2765,6 +2784,103 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!82 &1924777874
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924777869}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 1b6439ca44fed4241a251a180fa4c29f, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1924777875
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

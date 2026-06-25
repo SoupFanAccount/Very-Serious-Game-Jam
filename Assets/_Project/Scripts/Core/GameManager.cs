@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public void AddCleanMoney(int amount)
     {
         cleanMoney += amount;
+        CheckWin();
     }
 
     public void AddSuspicion(int amount)
@@ -71,30 +72,32 @@ public class GameManager : MonoBehaviour
         int washed = Mathf.Min(amount, dirtyMoney);
         dirtyMoney -= washed;
         cleanMoney += washed;
+        CheckWin();
     }
 
     public void NextDay()
     {
         currentDay++;
         if (currentDay > totalDays)
-            CheckDebt();
-    }
-
-    void CheckDebt()
-    {
-        if (cleanMoney >= debt)
-            WinGame();
-        else
             LoseGame();
     }
 
     void WinGame()
     {
         Debug.Log("Debt paid. You win.");
+        if (GameEndController.Instance != null)
+            GameEndController.Instance.TriggerWin();
     }
-
     void LoseGame()
     {
         Debug.Log("Game over.");
+        if (GameEndController.Instance != null)
+            GameEndController.Instance.TriggerLose();
+    }
+
+    void CheckWin()
+    {
+        if (cleanMoney >= debt)
+            WinGame();
     }
 }
