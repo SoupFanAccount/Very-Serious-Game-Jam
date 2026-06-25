@@ -516,67 +516,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1257756916631829556, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 353485732}
-    - targetCorrespondingSourceObject: {fileID: 1257756916631829556, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 353485731}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
---- !u!1 &353485730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1257756916631829556, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
-  m_PrefabInstance: {fileID: 353485729}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &353485731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353485730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e24866f091d6a41aeb94c2f39dfcef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shop.OnGuiInteractionPromptView
-  feedbackDuration: 2
---- !u!114 &353485732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353485730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063b97de2db315f49888b7677caa065e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shop.PlayerInteractionController
-  detectionRadius: 2.5
-  interactableMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  interactionOrigin: {fileID: 0}
-  promptView: {fileID: 0}
-  interactAction:
-    m_Name: Interact
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: 69f6c91a-0b25-4212-b150-38546a3805d8
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 158c3bb8-9bf9-49a3-af58-85b19d756f8d
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Interact
-      m_Flags: 0
-    m_Flags: 0
 --- !u!1001 &381525616
 PrefabInstance:
   m_ObjectHideFlags: 0
