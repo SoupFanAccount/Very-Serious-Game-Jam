@@ -27,6 +27,10 @@ namespace Shop
                 Game.LowerSuspicion(suspicionReduction);
 
             interactor.ShowFeedback($"Sale complete! +${saleValue}");
+
+            // Added by Donags. It tells the queued customer they've been served so they walk off.
+            if (TryGetComponent(out Customer customer))
+                customer.Serve();
         }
     }
 }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 857132870442610206}
   - component: {fileID: 7066976643163963806}
   - component: {fileID: 2390522335765309251}
+  - component: {fileID: 1895083903683291989}
+  - component: {fileID: 6535721849257474825}
   m_Layer: 0
   m_Name: Customer_Testing
   m_TagString: Untagged
@@ -69,8 +71,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabb657daf9f0c842a5cba9c662e4b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
-  moveSpeed: 4
+  customerState: 0
   orderPlaced: 0
+  isDone: 0
+  timeToGoTakeOrder: 0
+--- !u!114 &1895083903683291989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932329630455741062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236532636debd524dbacb7aea5d32eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shop.CustomerInteractable
+  interactionLabel: Serve Customer
+  availability: 1
+  oneShot: 1
+  interactionRange: 0
+  saleValue: 15
+  suspicionReduction: 1
+--- !u!136 &6535721849257474825
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932329630455741062}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4124621108495925792
 GameObject:
   m_ObjectHideFlags: 0

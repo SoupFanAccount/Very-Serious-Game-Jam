@@ -62,4 +62,10 @@ public class Customer : MonoBehaviour
         
         _agent.SetDestination(_targetPoint);
     }
+
+    // Added by Donags. It lets the shop interaction tell this customer they've been served so they leave.
+    public void Serve()
+    {
+        customerState = State.Done;
+    }
 }
