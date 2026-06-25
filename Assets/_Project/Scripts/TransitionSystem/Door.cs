@@ -1,11 +1,12 @@
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class Door : MonoBehaviour
 {
    [SerializeField] private Transform moveToTransform;
-   [SerializeField] private Camera enableCamera;
+   [SerializeField] private CinemachineCamera enableCamera;
 
    public Transform MoveToTransform() => moveToTransform;
 
-   public Camera CameraToEnable() => enableCamera;
+   public CinemachineCamera CameraToEnable() => enableCamera;
 }
