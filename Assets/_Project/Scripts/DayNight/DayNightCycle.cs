@@ -63,13 +63,15 @@ public class DayNightCycle : MonoBehaviour
     
     public void StartDay()
     {
-        currentPhase = Phase.Day;       
+        currentPhase = Phase.Day;
+        OpenShop(); // Added by Donags. isOpen was never being set true, breaking shop/audio
         Debug.Log("Day " + GameManager.Instance.currentDay + " started.");
     }
 
     public void StartNight()
     {
         currentPhase = Phase.Night;
+        CloseShop(); // Added by Donags. flip shop closed at night
         Debug.Log("Night started. Dirty money to clean: " + GameManager.Instance.dirtyMoney);
     }
 
