@@ -1735,12 +1735,7 @@ MonoBehaviour:
     maxSpawnTime: 9
   - time: Evening
     startHour: 16
-    endHour: 18
-    minSpawnTime: 5
-    maxSpawnTime: 9
-  - time: Night
-    startHour: 16
-    endHour: 22
+    endHour: 20
     minSpawnTime: 5
     maxSpawnTime: 9
 --- !u!4 &950931162
