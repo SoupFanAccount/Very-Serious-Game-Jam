@@ -2365,10 +2365,18 @@ MonoBehaviour:
   musicSource: {fileID: 1924777874}
   ambienceSource: {fileID: 1924777874}
   sfxSource: {fileID: 1924777874}
-  menuTheme: {fileID: 0}
-  shopTheme: {fileID: 0}
-  dayAmbience: []
-  nightAmbience: []
+  menuTheme: {fileID: 8300000, guid: 9beec9b34463cbc44958ec11a5ba55c1, type: 3}
+  shopTheme: {fileID: 8300000, guid: 7aad488b9f5fce54ea317c410af55626, type: 3}
+  dayAmbience:
+  - {fileID: 8300000, guid: 9c5518c3e3990cf4c8306d2173bb88f5, type: 3}
+  - {fileID: 8300000, guid: c428a5d5a01079b489ad15a4afb3d087, type: 3}
+  - {fileID: 8300000, guid: 4f1e298ff7d19204aa61fc866fef61ad, type: 3}
+  - {fileID: 8300000, guid: cec2a92ed45f3d647886dae689bb0b23, type: 3}
+  nightAmbience:
+  - {fileID: 8300000, guid: c6404e1355034bb42ae4ad4bcf7b7058, type: 3}
+  - {fileID: 8300000, guid: a2d59f22b95343a43adf06e64fe2d384, type: 3}
+  - {fileID: 8300000, guid: 799267925aed2e04aa5e78681ab236f2, type: 3}
+  - {fileID: 8300000, guid: c07337bafdbf98f4b99a7e1591125eea, type: 3}
 --- !u!82 &1924777872
 AudioSource:
   m_ObjectHideFlags: 0
