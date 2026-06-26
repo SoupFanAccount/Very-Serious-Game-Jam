@@ -2,24 +2,29 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    [SerializeField] private Customer customerPrefab;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private CustomerQueue customerQueue;
 
+    [SerializeField] private Customer[] customerPrefabs;
     [SerializeField] private SpawnSchedule[] spawnSchedule;
     
     private float _timer;
 
+    private void Start()
+    {
+        _timer = Random.Range(1, 2f);
+    }
+    
     private void Update()
     {
         if (customerQueue.CanAddCustomer() == false) return;
 
-        _timer += Time.deltaTime;
+        _timer -= Time.deltaTime;
 
-        if (_timer > 3f)
+        if (_timer <= 0f)
         {
             SpawnCustomer();
-            _timer = 0f;
+            _timer = Random.Range(2,5f);
         }
         
         // THIS COMMENTED CODE IS WORLD TIME BASED AND UPPPER CODE IS FOR TESTING PURPOSE
@@ -53,7 +58,7 @@ public class CustomerSpawner : MonoBehaviour
     
     private void SpawnCustomer()
     {
-        Customer customer = Instantiate(customerPrefab, transform.position, Quaternion.identity);
+        Customer customer = Instantiate(customerPrefabs[Random.Range(0,customerPrefabs.Length)], transform.position, Quaternion.identity);
         customer.Init(transform.position,customerQueue);
         
         customerQueue.AddCustomerToQueue(customer);

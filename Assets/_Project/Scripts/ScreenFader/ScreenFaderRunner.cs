@@ -60,8 +60,6 @@ public class ScreenFaderRunner : MonoBehaviour
       {
          t += Time.unscaledDeltaTime;
 
-         print("fade In - " + t);
-
          float currentAlpha = Mathf.Lerp(startAlpha, targetAlpha, t / duration);
          _img.color = new Color(0,0,0 , currentAlpha);
 
@@ -89,8 +87,6 @@ public class ScreenFaderRunner : MonoBehaviour
       while (t < duration)
       {
          t += Time.unscaledDeltaTime;
-
-         print("fade Out - " + t);
 
          float v = 1-Mathf.Pow(t / duration, 3);
          
