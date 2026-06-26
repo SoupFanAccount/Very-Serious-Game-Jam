@@ -27,12 +27,37 @@ namespace Minigames
         [SerializeField] private Color cleanColor = new Color(0.55f, 0.85f, 0.55f);
         [SerializeField] private Color ruinedColor = new Color(0.8f, 0.35f, 0.35f);
 
+        private bool _initialized;
+
         /// <summary>The stains that must be painted clean to launder this bill.</summary>
-        public IReadOnlyList<PaintableDirtyPatch> Patches => patches;
+        public IReadOnlyList<PaintableDirtyPatch> Patches
+        {
+            get
+            {
+                EnsureInitialized();
+                return patches;
+            }
+        }
 
         /// <summary>Caches the background image and discovers child stains when none are assigned.</summary>
         private void Awake()
         {
+            EnsureInitialized();
+        }
+
+        /// <summary>
+        /// Caches the background image and discovers child stains on first use. Safe to call repeatedly. This
+        /// runs from <see cref="Awake"/> and defensively from every public entry point, because the controller
+        /// can drive the bill in the same frame it is activated - before Awake is guaranteed to have run -
+        /// which would otherwise leave <see cref="patches"/> empty and the bill would register no stains.
+        /// </summary>
+        private void EnsureInitialized()
+        {
+            if (_initialized)
+                return;
+
+            _initialized = true;
+
             if (billImage == null)
                 billImage = GetComponent<Image>();
 
@@ -43,6 +68,7 @@ namespace Minigames
         /// <summary>Resets the background and every stain to a fresh, fully dirty state.</summary>
         public void ResetForNewBill()
         {
+            EnsureInitialized();
             Apply(dirtyColor, "Dirty");
 
             if (patches == null)

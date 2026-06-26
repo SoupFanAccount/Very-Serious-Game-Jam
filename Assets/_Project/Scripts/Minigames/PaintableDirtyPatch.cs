@@ -41,6 +41,7 @@ namespace Minigames
         private Vector3 _startScale;
         private float _cleanProgress;
         private bool _cleaned;
+        private bool _initialized;
 
         /// <summary>True once the stain has been fully painted clean.</summary>
         public bool IsCleaned => _cleaned;
@@ -48,6 +49,21 @@ namespace Minigames
         /// <summary>Caches components and records the resting scale used for shrink feedback.</summary>
         private void Awake()
         {
+            EnsureInitialized();
+        }
+
+        /// <summary>
+        /// Caches components and the resting scale on first use. Safe to call repeatedly. This runs from
+        /// <see cref="Awake"/> and defensively from every public entry point, because the controller can drive
+        /// the stain in the same frame it is activated - before Awake is guaranteed to have run - and accessing
+        /// the cached <see cref="_rectTransform"/> before then would throw.
+        /// </summary>
+        private void EnsureInitialized()
+        {
+            if (_initialized)
+                return;
+
+            _initialized = true;
             _rectTransform = GetComponent<RectTransform>();
             _startScale = _rectTransform.localScale;
 
@@ -58,6 +74,7 @@ namespace Minigames
         /// <summary>Returns the stain to its fresh, fully dirty state so the bill can be reused.</summary>
         public void ResetPatch()
         {
+            EnsureInitialized();
             _cleanProgress = 0f;
             _cleaned = false;
             _rectTransform.localScale = _startScale;
@@ -71,6 +88,8 @@ namespace Minigames
         /// </summary>
         public bool AddCleanProgress(float paintDelta)
         {
+            EnsureInitialized();
+
             if (_cleaned)
                 return false;
 
@@ -88,6 +107,8 @@ namespace Minigames
         /// <summary>True when the given screen point falls inside this stain's rectangle and it is still dirty.</summary>
         public bool ContainsScreenPoint(Vector2 screenPoint, Camera uiCamera)
         {
+            EnsureInitialized();
+
             if (_cleaned)
                 return false;
 

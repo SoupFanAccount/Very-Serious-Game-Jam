@@ -714,6 +714,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &460645991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2579916323623012122, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+  m_PrefabInstance: {fileID: 6419401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21acb27018c53e149baec2eba4860384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigames.ChemicalCleaningMinigameLauncher
 --- !u!1 &482125191
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +813,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 645568144802240937, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 943387703728958027, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 1986800386153315990, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 2031632111892016922, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 2668455036242045213, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 3136639128707577189, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 3236003652064897796, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 5244334483292453805, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 5391673984067292522, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 6137519090900098520, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 6332641790797389875, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 6821406361976073866, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
     - target: {fileID: 6960377050195442955, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: m_Name
       value: EnvWProps
@@ -858,6 +917,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7776518349611291274, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
+    - target: {fileID: 9064081485375581024, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
+      propertyPath: minigameLauncher
+      value: 
+      objectReference: {fileID: 460645991}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6694345749803848924, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
