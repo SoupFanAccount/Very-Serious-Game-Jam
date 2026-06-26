@@ -4,126 +4,210 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Customer : MonoBehaviour
 {
-    private enum State { WaitingInQueue, OrderPlaced, GoingToTakeOrder, Done }
+    public enum CustomerState { GoingToQueue, WaitingInQueue, OrderPlaced, WaitingForOrder, GoingToTakeOrder, Done, Leave }
 
     private NavMeshAgent _agent;
+    private Animator _animator;
     private CustomerQueue _customerQueue;
 
-    [SerializeField] private State customerState;
+    [SerializeField] private CustomerState customerState;
+    [SerializeField] private CustomerUI customerUI;
 
     private Vector3 _spawnPoint;
     private Vector3 _targetPoint;
 
-    [SerializeField] private bool orderPlaced;
-    [SerializeField] private bool isDone;
+    [Space(10f), Header("DressInfo"), Space(5f)]
 
-    [SerializeField] private bool timeToGoTakeOrder;
+    [SerializeField] private GameObject[] hats;
+    [SerializeField] private GameObject[] shirts;
 
-    [Tooltip("Seconds a served customer is given to walk out before they are force-despawned. " +
-             "Stops the queue soft-locking behind someone who can't path to the exit.")]
-    [SerializeField] private float leaveTimeout = 8f;
+    [Space(10f), Header("Dialogue Data"), Space(5f)]
 
-    private bool _leaving;
-    private float _leaveTimer;
+    [SerializeField] private CustomerDialogueData[] CustomerDialogueDataArray;
 
-    [Header("Patience")]
-    [Tooltip("Each customer waits a random time in this range (seconds) before giving up and leaving unserved.")]
-    [SerializeField] private float minPatience = 18f;
-    [SerializeField] private float maxPatience = 35f;
+    [Space(10), Header("Reaction Info"), Space(5f)]
 
-    [Tooltip("Suspicion added when a customer gives up and leaves unserved. 0 = no penalty.")]
+    [SerializeField] private float patienceTimerMin;
+    [SerializeField] private float patienceTimerMax;
+
+    // added/changed by donags
     [SerializeField] private int suspicionOnImpatientLeave = 2;
 
-    private float _patience;
-    private float _patienceMax;
+    private float _patienceTimer;
+    private float _patienceWarningShownTime;
+    private float _waitDialogueShownTime;
 
-    public float PatienceFraction => _patienceMax > 0f ? Mathf.Clamp01(_patience / _patienceMax) : 1f;
+    private bool _patienceWarningShown;
+    private bool _waitingDialogueShown;
+    private bool _doneDialogueShown;
+
+    private bool _canLeave;
+    private bool _isDone;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public void Init(Vector3 spawnPoint, CustomerQueue customerQueue)
     {
-        customerState = State.WaitingInQueue;
+        customerState = CustomerState.GoingToQueue;
 
         _spawnPoint = spawnPoint;
         _customerQueue = customerQueue;
 
-        _patienceMax = Random.Range(minPatience, maxPatience);
-        _patience = _patienceMax;
-        _leaving = false;
+        _patienceTimer = Random.Range(patienceTimerMin, patienceTimerMax);
+        _patienceWarningShownTime = _patienceTimer / 2;
+        _waitDialogueShownTime = Random.Range(_patienceWarningShownTime + 2, _patienceTimer);
+
+        ChooseRandomHat();
+        ChooseRandomShirt();
+    }
+
+    private void ChooseRandomHat()
+    {
+        if (hats.Length <= 0) return;
+
+        for (int i = 0; i < hats.Length; i++)
+            hats[i].SetActive(false);
+
+        hats[Random.Range(0, hats.Length)].SetActive(true);
+    }
+    private void ChooseRandomShirt()
+    {
+        if (shirts.Length <= 0) return;
+
+        for (int i = 0; i < shirts.Length; i++)
+            shirts[i].SetActive(false);
+
+        shirts[Random.Range(0, shirts.Length)].SetActive(true);
     }
 
     private void Update()
     {
+        if (_agent.velocity.sqrMagnitude > .1f)
+        {
+            _animator.SetBool("Move", true);
+            _animator.SetBool("Idle", false);
+        }
+        else
+        {
+            _animator.SetBool("Move", false);
+            _animator.SetBool("Idle", true);
+        }
+
         switch (customerState)
         {
-            case State.WaitingInQueue:
-                // Tick down patience while they wait. If you're too slow (busy at a
-                // machine, line too long), they give up and leave unserved.
-                _patience -= Time.deltaTime;
-                if (_patience <= 0f) LeaveUnserved();
+            case CustomerState.GoingToQueue:
+                if (_agent.hasPath && _agent.remainingDistance <= .1f) customerState = CustomerState.WaitingInQueue;
                 break;
 
-            case State.OrderPlaced:
-                orderPlaced = true;
+            case CustomerState.WaitingInQueue:
+
+                _patienceTimer -= Time.deltaTime;
+
+
+                // WAITING DIALOGUE -----
+                if (_patienceTimer <= _waitDialogueShownTime && _waitingDialogueShown == false)
+                {
+                    customerUI.ShowDialogue(GetDialogue(CustomerState.WaitingInQueue), .3f, .5f, .3f);
+                    _waitingDialogueShown = true;
+                }
+
+                // SHOW CLOCK -----
+                if (_patienceTimer <= _patienceWarningShownTime && _patienceWarningShown == false)
+                {
+                    customerUI.ShowPatienceClock(.3f);
+                    _patienceWarningShown = true;
+                }
+
+                // UPDATE CLOCK -- ONLY HAPPEN WHEN CLOCK ENABLE ---
+                customerUI.UpdateClock(_patienceTimer / _patienceWarningShownTime);
+
+                // CUSTOMER PATIENCE TIME OVER
+                if (_patienceTimer <= 0)
+                {
+                    // added/changed by donags
+                    if (suspicionOnImpatientLeave > 0 && GameManager.Instance != null)
+                        GameManager.Instance.AddSuspicion(suspicionOnImpatientLeave);
+
+                    // customerUI.PlayAngrySequence("Go To Hell!" , 0.3f ,() => _canLeave = true);
+                    customerUI.ShowDialogue(GetDialogue(CustomerState.Leave), .3f, .5f, .3f, () => _canLeave = true);
+                    customerState = CustomerState.Leave;
+                }
+                break;
+
+            /*case State.OrderPlaced:
                 _customerQueue.RemoveCustomerFromQueue(this);
                 _agent.SetDestination(_spawnPoint);
                 break;
 
-            case State.GoingToTakeOrder:
-                if (orderPlaced == false) return;
-                _customerQueue.AddCustomerToQueue(this);
-                break;
+            case State.WaitingForOrder: break;
 
-            case State.Done:
-                // Run the leave setup once, not every frame. Re-issuing SetDestination each
-                // frame keeps the path permanently pending so the agent never settles.
-                if (_leaving == false)
+            case State.GoingToTakeOrder:
+                _customerQueue.AddCustomerToQueue(this);
+                break;*/
+
+            case CustomerState.Done:
+
+                if (_doneDialogueShown == false)
                 {
-                    _leaving = true;
-                    _leaveTimer = 0f;
-                    _customerQueue.RemoveCustomerFromQueue(this);
-                    if (_agent.isOnNavMesh) _agent.SetDestination(_spawnPoint);
+                    customerUI.ShowDialogue(GetDialogue(CustomerState.Done), .3f, .3f, .5f, () => _isDone = true);
+                    _doneDialogueShown = true;
                 }
 
-                _leaveTimer += Time.deltaTime;
+                if (_isDone == false) return;
 
-                bool arrived = _agent.isOnNavMesh && _agent.pathPending == false &&
-                               _agent.remainingDistance <= _agent.stoppingDistance + 0.5f;
+                _customerQueue.RemoveCustomerFromQueue(this);
+                _agent.SetDestination(_spawnPoint);
+                if (_agent.hasPath && _agent.remainingDistance <= .5f) Destroy(gameObject);
+                break;
 
-                // Despawn on arrival, or bail out after a timeout so a customer who can't
-                // reach the exit (small/blocked shop) can never soft-lock the queue.
-                if (arrived || _leaveTimer >= leaveTimeout) Destroy(gameObject);
+            case CustomerState.Leave:
+                if (_canLeave == false) return;
+                _customerQueue.RemoveCustomerFromQueue(this);
+                _agent.SetDestination(_spawnPoint);
+                if (_agent.hasPath && _agent.remainingDistance <= .5f)
+                {
+                    if (_agent.pathPending == false)
+                        Destroy(gameObject);
+                }
                 break;
         }
     }
 
     public void MoveTo(Vector3 targetPoint)
     {
+        if (_canLeave) return;
+
         _targetPoint = targetPoint;
         if (_agent.isOnNavMesh == false) print("Customer is Not On NavMesh!");
 
         _agent.SetDestination(_targetPoint);
     }
 
-    // Added by Donags. It lets the shop interaction tell this customer they've been served so they leave.
+    private string GetDialogue(CustomerState state)
+    {
+        foreach (var customerDialogueData in CustomerDialogueDataArray)
+        {
+            if (customerDialogueData.customerState == state)
+                return customerDialogueData.dialogue[Random.Range(0, customerDialogueData.dialogue.Length)];
+        }
+
+        return "";
+    }
+
+    // added/changed by donags
     public void Serve()
     {
-        customerState = State.Done;
+        customerState = CustomerState.Done;
     }
+}
 
-    // The customer ran out of patience before being served: they walk off, and an
-    // unhappy customer nudges suspicion up a little.
-    private void LeaveUnserved()
-    {
-        if (customerState == State.Done) return;
-
-        if (suspicionOnImpatientLeave > 0 && GameManager.Instance != null)
-            GameManager.Instance.AddSuspicion(suspicionOnImpatientLeave);
-
-        customerState = State.Done;
-    }
+[System.Serializable]
+public class CustomerDialogueData
+{
+    public Customer.CustomerState customerState;
+    public string[] dialogue;
 }
