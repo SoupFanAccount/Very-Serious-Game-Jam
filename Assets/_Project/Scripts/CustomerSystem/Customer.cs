@@ -18,7 +18,14 @@ public class Customer : MonoBehaviour
     [SerializeField] private bool isDone;
 
     [SerializeField] private bool timeToGoTakeOrder;
-    
+
+    [Tooltip("Seconds a served customer is given to walk out before they are force-despawned. " +
+             "Stops the queue soft-locking behind someone who can't path to the exit.")]
+    [SerializeField] private float leaveTimeout = 8f;
+
+    private bool _leaving;
+    private float _leaveTimer;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -48,9 +55,24 @@ public class Customer : MonoBehaviour
                 break;
             
             case State.Done:
-                _customerQueue.RemoveCustomerFromQueue(this);
-                _agent.SetDestination(_spawnPoint);
-                if (_agent.hasPath && _agent.remainingDistance <= .1f) gameObject.SetActive(false);
+                // Run the leave setup once, not every frame. Re-issuing SetDestination each
+                // frame keeps the path permanently pending so the agent never settles.
+                if (_leaving == false)
+                {
+                    _leaving = true;
+                    _leaveTimer = 0f;
+                    _customerQueue.RemoveCustomerFromQueue(this);
+                    if (_agent.isOnNavMesh) _agent.SetDestination(_spawnPoint);
+                }
+
+                _leaveTimer += Time.deltaTime;
+
+                bool arrived = _agent.isOnNavMesh && _agent.pathPending == false &&
+                               _agent.remainingDistance <= _agent.stoppingDistance + 0.5f;
+
+                // Despawn on arrival, or bail out after a timeout so a customer who can't
+                // reach the exit (small/blocked shop) can never soft-lock the queue.
+                if (arrived || _leaveTimer >= leaveTimeout) Destroy(gameObject);
                 break;
         }
     }

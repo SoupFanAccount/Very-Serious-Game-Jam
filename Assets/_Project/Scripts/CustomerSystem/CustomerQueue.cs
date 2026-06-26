@@ -9,6 +9,9 @@ public class CustomerQueue : MonoBehaviour
 
    [SerializeField] private bool firstLineInXAxis;
 
+   [Tooltip("Hard cap on customers in the shop at once. The line length still caps it lower if there aren't enough queue points.")]
+   [SerializeField, Range(1, 12)] private int maxCustomers = 8;
+
    private List<Vector3> _queuePointList;
    private List<Customer> _customerList;
    
@@ -67,7 +70,8 @@ public class CustomerQueue : MonoBehaviour
 
    public bool CanAddCustomer()
    {
-      if (_customerList.Count >= _queuePointList.Count) return false;
+      int cap = Mathf.Min(maxCustomers, _queuePointList.Count);
+      if (_customerList.Count >= cap) return false;
       return true;
    }
    
