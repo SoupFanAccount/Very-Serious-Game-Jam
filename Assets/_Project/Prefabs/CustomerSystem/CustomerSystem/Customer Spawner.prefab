@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7397800586767790116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4626737077571270640}
+  - component: {fileID: 9042915223580267943}
+  m_Layer: 0
+  m_Name: Customer Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4626737077571270640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397800586767790116}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.09, y: 0, z: 9.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9042915223580267943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7397800586767790116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1658c5c5e77b8941ad769ef3993e964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawner
+  customerPrefabs:
+  - {fileID: 1862874083854500642, guid: 281076d69c6d13942aff64a91aeee008, type: 3}
+  - {fileID: 5324907137490936821, guid: b31f90a12a1b55f48987ac413bf7bd47, type: 3}
+  - {fileID: 4436795883276705353, guid: a15d1c6f72919e54082afba1bacd4676, type: 3}
+  - {fileID: 5358336045834131959, guid: 66c11dd802edc0a48a5bcc1f25e3effb, type: 3}
+  - {fileID: 5527111658823614625, guid: 069a4c420406a0842921f4dec4b10b46, type: 3}
+  - {fileID: 2669058935848884290, guid: 855d9bb48e4b79b499eecade53cf8ee3, type: 3}
+  - {fileID: 1031168558142126715, guid: dfc6a7efaf5d42f44ad081ad4d45776b, type: 3}
+  - {fileID: 7392457933295370916, guid: d4b1ae06fe70aea4281459af97f3b827, type: 3}
+  - {fileID: 7563548369020454984, guid: 2447783695292cb4b9972533e0c598a6, type: 3}
+  - {fileID: 6172970656424701855, guid: 291cd95263ef8234b9ab72033ba79495, type: 3}
+  spawnPoint: {fileID: 4626737077571270640}
+  customerQueue: {fileID: 4000332068557959472, guid: 1261ccc5fd3c3434fa44d2e176bccd06, type: 3}
+  spawnSchedule:
+  - time: Morning
+    startHour: 6
+    endHour: 11
+    minSpawnTime: 5
+    maxSpawnTime: 9
+  - time: Afternoon
+    startHour: 11
+    endHour: 16
+    minSpawnTime: 5
+    maxSpawnTime: 9
+  - time: Evening
+    startHour: 16
+    endHour: 18
+    minSpawnTime: 5
+    maxSpawnTime: 9
+  - time: Night
+    startHour: 16
+    endHour: 22
+    minSpawnTime: 5
+    maxSpawnTime: 9
