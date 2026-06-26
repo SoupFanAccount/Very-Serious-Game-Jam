@@ -127,9 +127,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 911859969691665286, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2495857284378066585, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893575080827631396, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2893575080827631396, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+      propertyPath: m_isOrthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2893575080827631396, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 2893575080827631396, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6303059770189605995, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
       propertyPath: m_Pivot.x
@@ -353,7 +373,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1271726924}
   placeholderWashAmount: 0
 --- !u!65 &292486657
 BoxCollider:
@@ -402,7 +422,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1271726924}
   placeholderWashAmount: 0
 --- !u!65 &310861707
 BoxCollider:
@@ -446,7 +466,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &312771322
 BoxCollider:
@@ -487,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399408196693361345, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.97
+      value: -1.69
       objectReference: {fileID: 0}
     - target: {fileID: 1399408196693361345, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -495,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399408196693361345, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.58
+      value: 2.69
       objectReference: {fileID: 0}
     - target: {fileID: 1399408196693361345, guid: 6ff7866349b9cb444bbf4065711988f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -714,17 +734,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!114 &460645991 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2579916323623012122, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
-  m_PrefabInstance: {fileID: 6419401}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21acb27018c53e149baec2eba4860384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Minigames.ChemicalCleaningMinigameLauncher
 --- !u!1 &482125191
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,51 +825,47 @@ PrefabInstance:
     - target: {fileID: 645568144802240937, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 943387703728958027, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 1986800386153315990, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 2031632111892016922, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 2668455036242045213, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 3136639128707577189, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 3236003652064897796, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 5244334483292453805, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 5391673984067292522, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 6137519090900098520, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
-    - target: {fileID: 6332641790797389875, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
-      propertyPath: minigameLauncher
-      value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 6821406361976073866, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 6960377050195442955, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: m_Name
       value: EnvWProps
@@ -920,11 +925,11 @@ PrefabInstance:
     - target: {fileID: 7776518349611291274, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     - target: {fileID: 9064081485375581024, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
       propertyPath: minigameLauncher
       value: 
-      objectReference: {fileID: 460645991}
+      objectReference: {fileID: 1783498190}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6694345749803848924, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
@@ -1044,7 +1049,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &613519014
 BoxCollider:
@@ -1119,7 +1124,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &732027459
 BoxCollider:
@@ -1142,6 +1147,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.043739997, y: 0.047817346, z: 0.054205168}
   m_Center: {x: 0.144342, y: -0.002038664, z: 0.027102582}
+--- !u!1001 &761082738
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.3934854
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.747788
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237445412151919650, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866180703490188835, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
+      propertyPath: m_Name
+      value: DirtyMoney_Package
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c56aa339e682e9842b6417f6915f2cf2, type: 3}
 --- !u!1 &828320930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1412,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1271726924}
   placeholderWashAmount: 0
 --- !u!65 &1128989884
 BoxCollider:
@@ -1406,6 +1468,17 @@ Transform:
   - {fileID: 832575519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1271726924 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5084800929255501234, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+  m_PrefabInstance: {fileID: 6419401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f6e0c8a5befa4c95f7708d720fc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigames.PaintingBillsMinigameLauncher
 --- !u!1 &1304839111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8037323190097163054, guid: 1fd2828d5266f424c810b3b1fc65ebfd, type: 3}
@@ -1427,7 +1500,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &1304839114
 BoxCollider:
@@ -1471,7 +1544,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1271726924}
   placeholderWashAmount: 0
 --- !u!65 &1336206551
 BoxCollider:
@@ -1515,7 +1588,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &1351058971
 BoxCollider:
@@ -1569,7 +1642,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &1530279548
 BoxCollider:
@@ -1801,7 +1874,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &1695887083
 BoxCollider:
@@ -1845,7 +1918,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &1757386426
 BoxCollider:
@@ -1868,6 +1941,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.043740004, y: 0.047817335, z: 0.054205153}
   m_Center: {x: -0.096227996, y: -0.0020386693, z: 0.027102577}
+--- !u!114 &1783498190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2579916323623012122, guid: 0e21506555477ad4a9d574858c9d0300, type: 3}
+  m_PrefabInstance: {fileID: 6419401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21acb27018c53e149baec2eba4860384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Minigames.ChemicalCleaningMinigameLauncher
 --- !u!1 &1877421361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2205,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &2018241319
 BoxCollider:
@@ -2165,7 +2249,7 @@ MonoBehaviour:
   availability: 0
   oneShot: 0
   interactionRange: 0
-  minigameLauncher: {fileID: 0}
+  minigameLauncher: {fileID: 1783498190}
   placeholderWashAmount: 0
 --- !u!65 &2128646210
 BoxCollider:
@@ -2201,3 +2285,4 @@ SceneRoots:
   - {fileID: 1877421362}
   - {fileID: 353485729}
   - {fileID: 544232401}
+  - {fileID: 761082738}
