@@ -33,13 +33,36 @@ namespace Minigames
         private Vector2 _startPosition;
         private bool _dragging;
         private bool _interactable;
+        private bool _initialized;
 
         /// <summary>The bill's RectTransform, read by the target zone to measure alignment.</summary>
-        public RectTransform Rect => _rectTransform;
+        public RectTransform Rect
+        {
+            get
+            {
+                EnsureInitialized();
+                return _rectTransform;
+            }
+        }
 
         /// <summary>Caches components and remembers the bill's resting position for resets.</summary>
         private void Awake()
         {
+            EnsureInitialized();
+        }
+
+        /// <summary>
+        /// Caches components and the resting position on first use. Safe to call repeatedly. This runs from
+        /// <see cref="Awake"/> and defensively from every public entry point, because the controller can drive
+        /// the bill in the same frame it is activated - before Awake is guaranteed to have run - and accessing
+        /// the cached <see cref="_rectTransform"/> before then would throw.
+        /// </summary>
+        private void EnsureInitialized()
+        {
+            if (_initialized)
+                return;
+
+            _initialized = true;
             _rectTransform = GetComponent<RectTransform>();
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvas = GetComponentInParent<Canvas>();
@@ -60,6 +83,7 @@ namespace Minigames
         /// <summary>Returns the bill to its resting position and shows the fresh dirty state for a new bill.</summary>
         public void ResetForNewBill()
         {
+            EnsureInitialized();
             _rectTransform.anchoredPosition = _startPosition;
             _canvasGroup.blocksRaycasts = true;
             Apply(dirtyColor, "Dirty");
@@ -80,6 +104,8 @@ namespace Minigames
         /// <summary>Begins a drag gesture if the controller currently allows one.</summary>
         public void OnBeginDrag(PointerEventData eventData)
         {
+            EnsureInitialized();
+
             if (!_interactable)
                 return;
 
@@ -128,6 +154,7 @@ namespace Minigames
         /// <summary>Applies a colour and label together, guarding missing references.</summary>
         private void Apply(Color color, string label)
         {
+            EnsureInitialized();
             if (billImage != null)
                 billImage.color = color;
             if (stateLabel != null)

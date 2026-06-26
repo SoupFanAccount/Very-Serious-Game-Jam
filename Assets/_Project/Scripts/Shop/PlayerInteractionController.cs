@@ -25,7 +25,7 @@ namespace Shop
         [SerializeField] private InputAction interactAction =
             new InputAction("Interact", InputActionType.Button, "<Keyboard>/e");
 
-        private const int OverlapBufferSize = 16;
+        private const int OverlapBufferSize = 64;
         private readonly Collider[] _overlapBuffer = new Collider[OverlapBufferSize];
 
         private IInteractable _current;
