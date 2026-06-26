@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
       _moveInputs.x = InputManager.Instance.GetX();
       _moveInputs.y = InputManager.Instance.GetY();
 
-      _moveDirection = new Vector3(_moveInputs.x, 0, _moveInputs.y).normalized;
+
+      // Added by Donags. To make movement relative to camera yaw so it matches the flipped top-down view
+      Vector3 rawDir = new Vector3(_moveInputs.x, 0, _moveInputs.y);
+      _moveDirection = (Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0) * rawDir).normalized;
       _isMoving = _moveDirection.sqrMagnitude > 0;
 
       if (_lastMoveInputs != _moveInputs)
