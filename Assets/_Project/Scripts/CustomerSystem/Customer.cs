@@ -86,15 +86,19 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
-        if (_agent.velocity.sqrMagnitude > .1f)
+        // added/changed by donags
+        if (_animator != null)
         {
-            _animator.SetBool("Move", true);
-            _animator.SetBool("Idle", false);
-        }
-        else
-        {
-            _animator.SetBool("Move", false);
-            _animator.SetBool("Idle", true);
+            if (_agent.velocity.sqrMagnitude > .1f)
+            {
+                _animator.SetBool("Move", true);
+                _animator.SetBool("Idle", false);
+            }
+            else
+            {
+                _animator.SetBool("Move", false);
+                _animator.SetBool("Idle", true);
+            }
         }
 
         switch (customerState)
