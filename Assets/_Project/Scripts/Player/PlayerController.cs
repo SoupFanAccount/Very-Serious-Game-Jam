@@ -4,7 +4,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
    private Rigidbody _rb;
-
+   private Animator _animator;
+   
    [SerializeField] private float moveSpeed;
    [SerializeField] private float decelerationTime;
    [SerializeField] private float accelerationTime;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
    private void Awake()
    {
       _rb = GetComponent<Rigidbody>();
+      _animator = GetComponentInChildren<Animator>();
       _emission = moveParticle.emission;
 
       _canTransition = true;
@@ -85,10 +87,21 @@ public class PlayerController : MonoBehaviour
       Vector3 targetVelocity = Vector3.Lerp(_startVelocity, target,  curveRate);
       _rb.linearVelocity = targetVelocity;
 
-      if (_rb.linearVelocity.sqrMagnitude <= 0) return;
+      if (_rb.linearVelocity.sqrMagnitude <= 0)
+      {
+         _animator.SetBool("Move" , false);
+         _animator.SetBool("Idle" , true);
+         
+         return;
+      }
+      
+      _animator.SetBool("Move" , true);
+      _animator.SetBool("Idle" , false);
       
       float speed01 = _rb.linearVelocity.magnitude / moveSpeed;
-      float stepsDistance = Mathf.Lerp(minParticle, maxParticle, speed01); 
+      float stepsDistance = Mathf.Lerp(minParticle, maxParticle, speed01);
+
+      _animator.SetFloat("SpeedUp", speed01 * 2);
       
       _emission.rateOverDistance = new ParticleSystem.MinMaxCurve(stepsDistance);
    }
