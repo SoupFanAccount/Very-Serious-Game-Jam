@@ -118,6 +118,17 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxScale: {x: 1, y: 1, z: 1}
+  dialogueSounds:
+  - {fileID: 8300000, guid: 8ae83393743dbd34db25ce1d6e30bf11, type: 3}
+  - {fileID: 8300000, guid: 6e3ef6305402a7f48904f1e1c7c78606, type: 3}
+  - {fileID: 8300000, guid: 18451b9ea7512e54b827d50565a82017, type: 3}
+  - {fileID: 8300000, guid: f03a8fb491a333345a56b34e5f8d466b, type: 3}
+  - {fileID: 8300000, guid: 13350558d7686314ca6fd57852b8ca5c, type: 3}
+  - {fileID: 8300000, guid: 1f98ff4d6e57a0a43b35d306d53c6b62, type: 3}
+  - {fileID: 8300000, guid: 1a52c267d875aa74db7dced7b390adfc, type: 3}
+  - {fileID: 8300000, guid: 3e077733810941e4aa4685039d5e1e2f, type: 3}
+  - {fileID: 8300000, guid: 782e36ee70be6bb489a47a8b42df7715, type: 3}
+  - {fileID: 8300000, guid: 3bcdef61b2e7fd94c8b97867ee9ba859, type: 3}
 --- !u!1 &507716161883178231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1823,7 @@ GameObject:
   - component: {fileID: 2669058935848884290}
   - component: {fileID: 7044985648323459385}
   - component: {fileID: 9097424093689762881}
+  - component: {fileID: 3129130441200243950}
   m_Layer: 0
   m_Name: Customer_Fisherman
   m_TagString: Untagged
@@ -1872,6 +1884,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Customer
   customerState: 0
   customerUI: {fileID: 5568791006187372543}
+  hats: []
+  shirts: []
   CustomerDialogueDataArray:
   - customerState: 1
     dialogue:
@@ -1898,6 +1912,7 @@ MonoBehaviour:
     - Great Work!
   patienceTimerMin: 10
   patienceTimerMax: 15
+  suspicionOnImpatientLeave: 2
 --- !u!114 &7044985648323459385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,6 +1954,103 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &3129130441200243950
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199438393779759218}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6877730571091353551
 GameObject:
   m_ObjectHideFlags: 0

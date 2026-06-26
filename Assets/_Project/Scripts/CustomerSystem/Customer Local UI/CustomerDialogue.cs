@@ -13,13 +13,20 @@ public class CustomerDialogue : MonoBehaviour
 
     [SerializeField] private Vector3 maxScale;
     
-    private RectTransform _bgImgRectTransform;
+    [Space(5f) , Header("Dialogue Sfx") , Space(5f)]
+    
+    [SerializeField] private AudioClip[] dialogueSounds;
+    private AudioSource _audioSource;
 
+    private Coroutine _speechCoroutine;
+    
+    private RectTransform _bgImgRectTransform;
     private bool _isDialogueEnable;
     
     private void Start()
     {
         _bgImgRectTransform = bgImg.GetComponent<RectTransform>();
+        _audioSource = GetComponentInParent<AudioSource>();
     }
     
     public IEnumerator ShowDialogue(string dialogue , float duration)
@@ -93,10 +100,41 @@ public class CustomerDialogue : MonoBehaviour
     {
         char[] cArray = dialogue.ToCharArray();
 
+        PlaySpeech();
+        
         for (int i = 0; i < cArray.Length; i++)
         {
             dialogueText.text += cArray[i];
             yield return new WaitForSeconds(0.05f);
         }
+
+        yield return null;
+        StopSpeech();
+    }
+
+    private void PlaySpeech()
+    {
+        if(_speechCoroutine != null) StopCoroutine(_speechCoroutine);
+        _speechCoroutine = StartCoroutine(PlaySpeechCoroutine());
+    }
+    
+    private IEnumerator PlaySpeechCoroutine()
+    {
+        if (dialogueSounds.Length <= 0) yield break;
+        
+        while (true)
+        {
+            AudioClip clip = dialogueSounds[Random.Range(0, dialogueSounds.Length)];
+            _audioSource.PlayOneShot(clip, 1);
+            
+            yield return new WaitForSeconds(clip.length + .05f);
+        }
+    }
+
+    private void StopSpeech()
+    {
+        if(_speechCoroutine != null) StopCoroutine(_speechCoroutine);
+        
+        _audioSource.Stop();
     }
 }
