@@ -21,11 +21,13 @@ public class CustomerDialogue : MonoBehaviour
     private Coroutine _speechCoroutine;
     
     private RectTransform _bgImgRectTransform;
+    private RectTransform _textRectTransform;
     private bool _isDialogueEnable;
     
     private void Start()
     {
         _bgImgRectTransform = bgImg.GetComponent<RectTransform>();
+        _textRectTransform = dialogueText.GetComponent<RectTransform>();
         _audioSource = GetComponentInParent<AudioSource>();
     }
     
@@ -40,11 +42,12 @@ public class CustomerDialogue : MonoBehaviour
         yield return null;
         dialogueText.text = dialogue;
         
-        _bgImgRectTransform.sizeDelta = new Vector2(dialogueText.preferredWidth + .5f, dialogueText.preferredHeight + .2f);
+        _bgImgRectTransform.sizeDelta = new Vector2(dialogueText.preferredWidth + .5f, dialogueText.preferredHeight + 1.5f);
         _bgImgRectTransform.anchoredPosition = new Vector2(0, _bgImgRectTransform.sizeDelta.y / 2);
         
         dialogueText.text = "";
-
+        _textRectTransform.anchoredPosition = new Vector2(0, .2f);
+        
         yield return StartCoroutine(PopUpCoroutine(dialogue,duration));
     }
 
