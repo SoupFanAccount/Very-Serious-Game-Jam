@@ -40,7 +40,8 @@ public class Customer : MonoBehaviour
     private bool _patienceWarningShown;
     private bool _waitingDialogueShown;
     private bool _doneDialogueShown;
-
+    private bool _emojiShown;
+    
     private bool _canLeave;
     private bool _isDone;
 
@@ -163,13 +164,30 @@ public class Customer : MonoBehaviour
 
                 if (_isDone == false) return;
 
+                if (_emojiShown == false && Random.Range(0, 101) < 40 && _agent.remainingDistance > 2f)
+                {
+                    customerUI.ShowEmoji(Emoji.EmojiType.Happy);
+                    _emojiShown = true;
+                }
+                
                 _customerQueue.RemoveCustomerFromQueue(this);
                 _agent.SetDestination(_spawnPoint);
-                if (_agent.hasPath && _agent.remainingDistance <= .5f) Destroy(gameObject);
+                if (_agent.hasPath && _agent.remainingDistance <= .5f)
+                {
+                    if(_agent.pathPending == false)
+                        Destroy(gameObject);
+                }
                 break;
 
             case CustomerState.Leave:
                 if (_canLeave == false) return;
+                
+                if (_emojiShown == false && Random.Range(0, 101) < 40 && _agent.remainingDistance > 2f)
+                {
+                    customerUI.ShowEmoji(Emoji.EmojiType.Angry);
+                    _emojiShown = true;
+                }
+                
                 _customerQueue.RemoveCustomerFromQueue(this);
                 _agent.SetDestination(_spawnPoint);
                 if (_agent.hasPath && _agent.remainingDistance <= .5f)

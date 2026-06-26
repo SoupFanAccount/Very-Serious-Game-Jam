@@ -6,7 +6,8 @@ public class CustomerUI : MonoBehaviour
 {
     [SerializeField] private PatienceClock patienceClock;
     [SerializeField] private CustomerDialogue dialogue;
-
+    [SerializeField] private Emoji emoji;
+    
     private Coroutine _currentSequence;
 
     public void UpdateClock(float value)
@@ -34,6 +35,11 @@ public class CustomerUI : MonoBehaviour
         PlaySequence(AngrySequence(text, duration, onComplete));
     }
 
+    public void ShowEmoji(Emoji.EmojiType emojiType)
+    {
+        emoji.ShowEmoji(emojiType);
+    }
+    
     private void PlaySequence(IEnumerator sequence)
     {
         if (_currentSequence != null)

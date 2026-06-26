@@ -137,7 +137,8 @@ public class CustomerDialogue : MonoBehaviour
     private void StopSpeech()
     {
         if(_speechCoroutine != null) StopCoroutine(_speechCoroutine);
-        
+
+        _speechCoroutine = null;
         _audioSource.Stop();
     }
 }

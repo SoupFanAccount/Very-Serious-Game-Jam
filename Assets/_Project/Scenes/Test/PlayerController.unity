@@ -1048,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Customer Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 7397800586767790116, guid: eae2c90d14200134c9e34168be543269, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9042915223580267943, guid: eae2c90d14200134c9e34168be543269, type: 3}
       propertyPath: customerQueue
       value: 
