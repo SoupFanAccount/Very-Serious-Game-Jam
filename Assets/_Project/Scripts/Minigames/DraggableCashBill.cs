@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -15,7 +16,8 @@ namespace Minigames
     public class DraggableCashBill : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         [Tooltip("Image whose colour shows the bill's current stage. Defaults to the Image on this object.")]
-        [SerializeField] private Image billImage;
+        [SerializeField] private Image billDirtyImage;
+        [SerializeField] private Image billCleanImage;
 
         [Tooltip("Label that shows the bill's current stage text.")]
         [SerializeField] private TextMeshProUGUI stateLabel;
@@ -58,8 +60,11 @@ namespace Minigames
             _canvas = GetComponentInParent<Canvas>();
             _startPosition = _rectTransform.anchoredPosition;
 
-            if (billImage == null)
-                billImage = GetComponent<Image>();
+            if (billDirtyImage == null)
+                billDirtyImage = GetComponent<Image>();
+
+            if (billCleanImage == null)
+                billCleanImage = GetComponent<Image>();
         }
 
         /// <summary>Connects the bill to the session controller. Called when a session begins.</summary>
@@ -158,8 +163,10 @@ namespace Minigames
         private void Apply(Color color, string label)
         {
             EnsureInitialized();
-            if (billImage != null)
-                billImage.color = color;
+            if (billDirtyImage != null)
+                billDirtyImage.color = color;
+            if (billCleanImage != null)
+                billCleanImage.color = color;
             if (stateLabel != null)
                 stateLabel.text = label;
         }
