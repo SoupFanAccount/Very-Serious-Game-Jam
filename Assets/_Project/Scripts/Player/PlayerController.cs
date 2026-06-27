@@ -47,7 +47,17 @@ public class PlayerController : MonoBehaviour
       _emission = moveParticle.emission;
 
       if (_animator == null)
+      {
          Debug.LogWarning("PlayerController: no Animator found in children. Movement works but animations are skipped.", this);
+      }
+      else if (_animator.runtimeAnimatorController == null)
+      {
+         // Calling SetBool/SetFloat on an Animator with no controller spams
+         // "Animator is not playing an AnimatorController" every frame. Treat it
+         // as "no usable animator" so the existing guards skip animation calls.
+         Debug.LogWarning($"PlayerController: Animator on '{_animator.name}' has no AnimatorController assigned. Movement works but animations are skipped.", this);
+         _animator = null;
+      }
 
       _canTransition = true;
    }
