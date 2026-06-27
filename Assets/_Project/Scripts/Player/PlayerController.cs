@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
       _animator = GetComponentInChildren<Animator>();
       _emission = moveParticle.emission;
 
+      if (_animator == null)
+         Debug.LogWarning("PlayerController: no Animator found in children. Movement works but animations are skipped.", this);
+
       _canTransition = true;
    }
 
@@ -87,22 +90,21 @@ public class PlayerController : MonoBehaviour
       Vector3 targetVelocity = Vector3.Lerp(_startVelocity, target,  curveRate);
       _rb.linearVelocity = targetVelocity;
 
-      if (_rb.linearVelocity.sqrMagnitude <= 0)
+      bool moving = _rb.linearVelocity.sqrMagnitude > 0;
+
+      if (_animator)
       {
-         _animator.SetBool("Move" , false);
-         _animator.SetBool("Idle" , true);
-         
-         return;
+         _animator.SetBool("Move" , moving);
+         _animator.SetBool("Idle" , !moving);
       }
-      
-      _animator.SetBool("Move" , true);
-      _animator.SetBool("Idle" , false);
-      
+
+      if (!moving) return;
+
       float speed01 = _rb.linearVelocity.magnitude / moveSpeed;
       float stepsDistance = Mathf.Lerp(minParticle, maxParticle, speed01);
 
-      _animator.SetFloat("SpeedUp", speed01 * 2);
-      
+      if (_animator) _animator.SetFloat("SpeedUp", speed01 * 2);
+
       _emission.rateOverDistance = new ParticleSystem.MinMaxCurve(stepsDistance);
    }
    
