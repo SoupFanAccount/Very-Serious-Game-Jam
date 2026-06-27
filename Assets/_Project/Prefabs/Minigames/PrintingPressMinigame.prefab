@@ -161,8 +161,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dirty
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -434,8 +434,10 @@ MonoBehaviour:
   closeButton: {fileID: 9177147324169699516}
   quitButton: {fileID: 1741434526349927992}
   maxBillValue: 100
+  maxBillsPerSession: 8
   suspicionPerFailedBill: 5
   secondsPerBill: 10
+  disableTimerForTesting: 0
   alignmentTolerance: 40
   perfectTolerance: 12
   requireCenterInsideZone: 0
@@ -508,8 +510,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Close
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -645,8 +647,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Bill 1 of 1  -  $0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -782,8 +784,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SPIN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1060,7 +1062,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbd98c34078bb7e47b08971611a22ca4, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minigames.PrintingPressCrank
   handle: {fileID: 0}
   progressFill: {fileID: 0}
@@ -1132,8 +1134,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: ALIGN HERE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1269,8 +1271,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Leave
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1406,8 +1408,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRESS BED
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1543,8 +1545,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Drag the bill onto the target, then pull the lever to print.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1680,8 +1682,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRINTING PRESS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2001,8 +2003,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2259,8 +2261,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRINT RUN COMPLETE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2474,8 +2476,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2611,8 +2613,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time: 10.0s'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 0}
-  m_sharedMaterial: {fileID: 0}
+  m_fontAsset: {fileID: 11400000, guid: 8400a0de67217764ea27fd869de54550, type: 2}
+  m_sharedMaterial: {fileID: 2389154255410426552, guid: 8400a0de67217764ea27fd869de54550, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
