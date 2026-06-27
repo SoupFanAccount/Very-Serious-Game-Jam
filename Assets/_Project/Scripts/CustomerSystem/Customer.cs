@@ -58,6 +58,14 @@ public class Customer : MonoBehaviour
         _spawnPoint = spawnPoint;
         _customerQueue = customerQueue;
 
+        // Give each customer a distinct avoidance priority so queued agents yield
+        // to each other instead of symmetrically shoving (the "fighting" in the line).
+        _agent.avoidancePriority = Random.Range(30, 71);
+
+        // The prefab radius (0.6) is nearly as wide as the 1.5 queue spacing, so
+        // neighbours' avoidance bubbles overlap and jostle. Shrink it to leave a gap.
+        _agent.radius = 0.4f;
+
         _patienceTimer = Random.Range(patienceTimerMin, patienceTimerMax);
         _patienceWarningShownTime = _patienceTimer / 2;
         _waitDialogueShownTime = Random.Range(_patienceWarningShownTime + 2, _patienceTimer);
