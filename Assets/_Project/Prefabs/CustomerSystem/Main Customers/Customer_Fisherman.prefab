@@ -2154,6 +2154,7 @@ MonoBehaviour:
   patienceTimerMin: 10
   patienceTimerMax: 15
   suspicionOnImpatientLeave: 2
+  servedJingle: {fileID: 8300000, guid: 35c6418aa5b75084e9cda1e575ec8d7a, type: 3}
 --- !u!114 &7044985648323459385
 MonoBehaviour:
   m_ObjectHideFlags: 0

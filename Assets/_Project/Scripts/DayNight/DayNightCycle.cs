@@ -65,6 +65,7 @@ public class DayNightCycle : MonoBehaviour
     {
         currentPhase = Phase.Day;
         OpenShop(); // Added by Donags. isOpen was never being set true, breaking shop/audio
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayDayJingle();
         Debug.Log("Day " + GameManager.Instance.currentDay + " started.");
     }
 
@@ -72,6 +73,7 @@ public class DayNightCycle : MonoBehaviour
     {
         currentPhase = Phase.Night;
         CloseShop(); // Added by Donags. flip shop closed at night
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayNightJingle();
         Debug.Log("Night started. Dirty money to clean: " + GameManager.Instance.dirtyMoney);
     }
 

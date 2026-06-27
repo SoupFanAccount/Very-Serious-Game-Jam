@@ -45,9 +45,11 @@ public class PauseMenuController : MonoBehaviour
     {
         _isPaused = true;
 
-        if (menuOpenSFX != null && AudioManager.Instance != null)
+        if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySFX(menuOpenSFX);
+            // Use the per-controller override if assigned, otherwise the shared menu-open sound.
+            if (menuOpenSFX != null) AudioManager.Instance.PlaySFX(menuOpenSFX);
+            else AudioManager.Instance.PlayMenuOpen();
         }
 
         if (pausePanel != null) pausePanel.SetActive(true);
@@ -61,9 +63,10 @@ public class PauseMenuController : MonoBehaviour
     {
         _isPaused = false;
 
-        if (menuCloseSFX != null && AudioManager.Instance != null)
+        if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySFX(menuCloseSFX);
+            if (menuCloseSFX != null) AudioManager.Instance.PlaySFX(menuCloseSFX);
+            else AudioManager.Instance.PlayMenuClose();
         }
 
         if (pausePanel != null) pausePanel.SetActive(false);

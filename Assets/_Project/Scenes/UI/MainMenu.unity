@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 1075085044}
   - component: {fileID: 1075085043}
   - component: {fileID: 1075085042}
+  - component: {fileID: 1075085045}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -963,6 +964,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075085040}
   m_CullTransparentMesh: 1
+--- !u!114 &1075085045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075085040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43bd7521f58461042a08f3d1bb1d6aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
+  hoverSFX: {fileID: 0}
+  clickSFX: {fileID: 0}
 --- !u!1 &1092721967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1873,7 @@ MonoBehaviour:
   ambienceSource: {fileID: 1924777874}
   laundrySource: {fileID: 1924777874}
   sfxSource: {fileID: 1924777874}
+  uiLoopSource: {fileID: 0}
   menuTheme: {fileID: 8300000, guid: 9beec9b34463cbc44958ec11a5ba55c1, type: 3}
   shopTheme: {fileID: 8300000, guid: 7aad488b9f5fce54ea317c410af55626, type: 3}
   dayAmbience:
@@ -1879,6 +1895,37 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 698aa319ff4b51f4a8b6b8e0e607a9d6, type: 3}
   - {fileID: 8300000, guid: d741ba75695d2864695a92ad3136612e, type: 3}
   - {fileID: 8300000, guid: 7d044c649212ebf4e820fcf5aacf3fff, type: 3}
+  uiHover: {fileID: 8300000, guid: 6ef6c75c327e74c4da2af6e1fb0facd2, type: 3}
+  uiClick: {fileID: 8300000, guid: e0aa8c3f20a2b8945a6966927ef6ac2b, type: 3}
+  uiConfirm: {fileID: 8300000, guid: a5001434c9c2aae44ab899aac1ea6ca0, type: 3}
+  uiCancel: {fileID: 8300000, guid: 3b83ad945205efa45916e6b7717861e0, type: 3}
+  uiMenuOpen: {fileID: 8300000, guid: a0e07497c20055549b74d0752a362526, type: 3}
+  uiMenuClose: {fileID: 8300000, guid: 95ecec4939b726047935e1fa1e8fcc4c, type: 3}
+  uiItemBuy: {fileID: 8300000, guid: 21e00274f0b232e40b1477b1ef083959, type: 3}
+  uiItemUse: {fileID: 8300000, guid: 18431b36159b7a743aceda69435a7828, type: 3}
+  uiVolumeTick: {fileID: 8300000, guid: f6b8791856592744c8f44640b07ef654, type: 3}
+  cashCountLoop: {fileID: 8300000, guid: 6464caa934a48594294e5ea9de75c91a, type: 3}
+  cashCountEnd: {fileID: 8300000, guid: 47680e15c94010d46a91e7aeda65ea3a, type: 3}
+  dayJingle: {fileID: 8300000, guid: ae6039e926a0978439337529725c649f, type: 3}
+  nightJingle: {fileID: 8300000, guid: 0e09cd2521f84ee4ea3bb8b3a2648d96, type: 3}
+  chatBubbleNormal:
+  - {fileID: 8300000, guid: dab3796bfc034f74a8f2eb7eaf256ff8, type: 3}
+  - {fileID: 8300000, guid: f15e00719d7da444c8f5adf8c89601f7, type: 3}
+  - {fileID: 8300000, guid: 6ea3e0686720bf342a62d107922d7992, type: 3}
+  - {fileID: 8300000, guid: 6a41d497b2aeee744bc6c3563610080b, type: 3}
+  - {fileID: 8300000, guid: c783724a21e902842ac16ce27fb724e4, type: 3}
+  chatBubbleAngry:
+  - {fileID: 8300000, guid: 5f83743d43d79af42b214ffd458d216b, type: 3}
+  - {fileID: 8300000, guid: ef4eaa9ef598dcf4c985987cbc0773f4, type: 3}
+  - {fileID: 8300000, guid: 9275aa5a5eabe8541bb56ad5ef3f4ca8, type: 3}
+  - {fileID: 8300000, guid: ee8e4738dd42f684c831387c85aa3e43, type: 3}
+  - {fileID: 8300000, guid: 63d4c97955a7d4d4bac2c52d1cfa4715, type: 3}
+  chatBubbleSurprise:
+  - {fileID: 8300000, guid: d2cf0274c6ceace4e9bab188844255bf, type: 3}
+  - {fileID: 8300000, guid: 30c963500465c5843b9546d46bca711b, type: 3}
+  - {fileID: 8300000, guid: 2ddbbdd02b8e9424d94f69fe921a43b3, type: 3}
+  - {fileID: 8300000, guid: 057910d665461554c8fc65910f052f67, type: 3}
+  - {fileID: 8300000, guid: 09cde5fe53014984f84ae8abe0ce5aa0, type: 3}
 --- !u!82 &1924777872
 AudioSource:
   m_ObjectHideFlags: 0

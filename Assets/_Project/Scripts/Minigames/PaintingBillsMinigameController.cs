@@ -209,6 +209,9 @@ namespace Minigames
 
             if (_activePatches.Count == 0)
                 CompleteCurrentBill();
+            else if (AudioManager.Instance != null)
+                AudioManager.Instance.PlayItemUse(); // soft tick per stain scrubbed clean
+
         }
 
         /// <summary>Cleans the current bill, converts its money and schedules the next bill.</summary>
@@ -229,6 +232,7 @@ namespace Minigames
             _billsCleaned++;
             if (bill != null)
                 bill.ShowCleaned();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayConfirm();
             UpdateStatus($"Clean! Laundered ${washed}.");
             ResolveBill();
         }
@@ -244,6 +248,7 @@ namespace Minigames
             _billsFailed++;
             if (bill != null)
                 bill.ShowRuined();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayCancel();
             // The cash is not destroyed: it stays dirty in the GameManager pool and can be attempted again later.
             UpdateStatus($"{reason} Bill botched - still dirty. +{suspicionPerFailedBill} suspicion.");
             ResolveBill();
@@ -318,6 +323,10 @@ namespace Minigames
                 summaryPanel.SetActive(true);
             if (summaryText != null)
                 summaryText.text = _lastResult.ToSummaryString();
+
+            // Tally the laundered cash on the summary; length scales with the amount.
+            if (_moneyLaundered > 0 && AudioManager.Instance != null)
+                AudioManager.Instance.PlayCashCount(_moneyLaundered * 0.01f);
 
             if (autoCloseDelay > 0f)
                 _autoCloseRoutine = StartCoroutine(AutoCloseAfterDelay());

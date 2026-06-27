@@ -7,6 +7,10 @@ public class SettingsPanelController : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider volumeSlider;
 
+    // Last volume at which a tick sound played, so dragging the slider ratchets
+    // instead of firing a sound every frame.
+    private float _lastTickVolume = -1f;
+
     private void Start()
     {
         if (settingsPanel != null)
@@ -44,6 +48,13 @@ public class SettingsPanelController : MonoBehaviour
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.SetMasterVolume(sliderValue);
+
+            // Ratchet a tick every ~5% of travel so dragging feels responsive without spamming.
+            if (_lastTickVolume < 0f || Mathf.Abs(sliderValue - _lastTickVolume) >= 0.05f)
+            {
+                AudioManager.Instance.PlayVolumeTick();
+                _lastTickVolume = sliderValue;
+            }
 
             PlayerPrefs.SetFloat("MasterVolumeLevel", sliderValue);
             PlayerPrefs.Save();

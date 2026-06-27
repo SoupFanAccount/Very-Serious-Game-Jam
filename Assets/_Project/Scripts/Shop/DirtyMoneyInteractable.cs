@@ -26,6 +26,8 @@ namespace Shop
             if (extraSuspicion > 0)
                 Game.AddSuspicion(extraSuspicion);
 
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayItemBuy();
+
             interactor.ShowFeedback($"Accepted. +${dirtyMoneyAmount} dirty money");
         }
     }

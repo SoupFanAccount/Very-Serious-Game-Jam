@@ -24,6 +24,7 @@ namespace Shop
 
             if (Game.dirtyMoney <= 0)
             {
+                if (AudioManager.Instance != null) AudioManager.Instance.PlayCancel();
                 interactor.ShowFeedback("No dirty money to wash.");
                 return;
             }
@@ -39,6 +40,7 @@ namespace Shop
                 : Game.dirtyMoney;
 
             Game.WashMoney(amount);
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayCashCount(amount * 0.01f);
             interactor.ShowFeedback($"Laundered ${amount}.");
         }
     }

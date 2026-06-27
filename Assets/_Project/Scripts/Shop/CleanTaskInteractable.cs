@@ -26,6 +26,8 @@ namespace Shop
             if (cleanMoneyReward > 0)
                 Game.AddCleanMoney(cleanMoneyReward);
 
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayConfirm();
+
             interactor.ShowFeedback(BuildFeedback());
         }
 

@@ -190,6 +190,7 @@ namespace Minigames
                 else
                 {
                     bill.SetStage(_currentStage);
+                    if (AudioManager.Instance != null) AudioManager.Instance.PlayItemUse();
                     UpdateStatus($"Chem {_currentStage} applied. Next: Chem {_currentStage + 1}.");
                 }
             }
@@ -217,6 +218,7 @@ namespace Minigames
             _moneyLaundered += washed;
             _billsCleaned++;
             bill.SetStage(StagesPerBill);
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayConfirm();
             UpdateStatus($"Clean! Laundered ${washed}.");
             ResolveBill();
         }
@@ -231,6 +233,7 @@ namespace Minigames
             _suspicionAdded += suspicionPerFailedBill;
             _billsFailed++;
             bill.ShowFailed();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayCancel();
             // The cash is not destroyed: it stays dirty in the GameManager pool and can be attempted again later.
             UpdateStatus($"Wrong chemical! Bill botched - still dirty. +{suspicionPerFailedBill} suspicion.");
             ResolveBill();
@@ -298,6 +301,10 @@ namespace Minigames
                 summaryPanel.SetActive(true);
             if (summaryText != null)
                 summaryText.text = _lastResult.ToSummaryString();
+
+            // Tally the laundered cash on the summary; length scales with the amount.
+            if (_moneyLaundered > 0 && AudioManager.Instance != null)
+                AudioManager.Instance.PlayCashCount(_moneyLaundered * 0.01f);
 
             if (autoCloseDelay > 0f)
                 _autoCloseRoutine = StartCoroutine(AutoCloseAfterDelay());

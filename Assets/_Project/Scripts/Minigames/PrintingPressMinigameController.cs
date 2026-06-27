@@ -231,6 +231,7 @@ namespace Minigames
                 bill.ShowPrinted();
             if (targetZone != null)
                 targetZone.FlashSuccess();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayConfirm();
 
             UpdateAlignment(perfect ? "Perfect print!" : "Printed clean!");
             UpdateStatus($"Printed! Laundered ${washed}.");
@@ -251,6 +252,7 @@ namespace Minigames
                 bill.ShowRuined();
             if (targetZone != null)
                 targetZone.FlashFailure();
+            if (AudioManager.Instance != null) AudioManager.Instance.PlayCancel();
 
             UpdateAlignment("Misprint! Bill botched.");
             // The cash is not destroyed: it stays dirty in the GameManager pool and can be attempted again later.
@@ -330,6 +332,10 @@ namespace Minigames
                 summaryPanel.SetActive(true);
             if (summaryText != null)
                 summaryText.text = _lastResult.ToSummaryString();
+
+            // Tally the laundered cash on the summary; length scales with the amount.
+            if (_moneyLaundered > 0 && AudioManager.Instance != null)
+                AudioManager.Instance.PlayCashCount(_moneyLaundered * 0.01f);
 
             if (autoCloseDelay > 0f)
                 _autoCloseRoutine = StartCoroutine(AutoCloseAfterDelay());

@@ -33,6 +33,11 @@ public class Customer : MonoBehaviour
     // added/changed by donags
     [SerializeField] private int suspicionOnImpatientLeave = 2;
 
+    [Space(10), Header("Audio"), Space(5f)]
+
+    [Tooltip("Celebratory jingle for this animal, played once when the customer is successfully served. Assign the matching per-animal Jingle clip on each customer prefab.")]
+    [SerializeField] private AudioClip servedJingle;
+
     private float _patienceTimer;
     private float _patienceWarningShownTime;
     private float _waitDialogueShownTime;
@@ -125,6 +130,7 @@ public class Customer : MonoBehaviour
                 if (_patienceTimer <= _waitDialogueShownTime && _waitingDialogueShown == false)
                 {
                     customerUI.ShowDialogue(GetDialogue(CustomerState.WaitingInQueue), .3f, .5f, .3f);
+                    if (AudioManager.Instance != null) AudioManager.Instance.PlayChatBubble(ChatMood.Normal);
                     _waitingDialogueShown = true;
                 }
 
@@ -147,6 +153,7 @@ public class Customer : MonoBehaviour
 
                     // customerUI.PlayAngrySequence("Go To Hell!" , 0.3f ,() => _canLeave = true);
                     customerUI.ShowDialogue(GetDialogue(CustomerState.Leave), .3f, .5f, .3f, () => _canLeave = true);
+                    if (AudioManager.Instance != null) AudioManager.Instance.PlayChatBubble(ChatMood.Angry);
                     customerState = CustomerState.Leave;
                 }
                 break;
@@ -167,6 +174,7 @@ public class Customer : MonoBehaviour
                 if (_doneDialogueShown == false)
                 {
                     customerUI.ShowDialogue(GetDialogue(CustomerState.Done), .3f, .3f, .5f, () => _isDone = true);
+                    if (AudioManager.Instance != null) AudioManager.Instance.PlayChatBubble(ChatMood.Surprise);
                     _doneDialogueShown = true;
                 }
 
@@ -232,6 +240,9 @@ public class Customer : MonoBehaviour
     public void Serve()
     {
         customerState = CustomerState.Done;
+        // Reward sting for a successful sale, voiced per animal via the prefab's clip.
+        if (servedJingle != null && AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(servedJingle);
     }
 }
 

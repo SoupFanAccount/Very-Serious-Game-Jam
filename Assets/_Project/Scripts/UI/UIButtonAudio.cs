@@ -10,17 +10,16 @@ public class UIButtonAudio : MonoBehaviour, IPointerEnterHandler, IPointerClickH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (hoverSFX != null)
-        {
-            AudioManager.Instance.PlaySFX(hoverSFX);
-        }
+        if (AudioManager.Instance == null) return;
+        // Fall back to the shared default so a button only needs the component, not its own clips.
+        AudioClip clip = hoverSFX != null ? hoverSFX : AudioManager.Instance.UiHover;
+        AudioManager.Instance.PlaySFX(clip);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (clickSFX != null)
-        {
-            AudioManager.Instance.PlaySFX(clickSFX);
-        }
+        if (AudioManager.Instance == null) return;
+        AudioClip clip = clickSFX != null ? clickSFX : AudioManager.Instance.UiClick;
+        AudioManager.Instance.PlaySFX(clip);
     }
 }
